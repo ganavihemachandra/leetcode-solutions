@@ -1,6 +1,7 @@
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
-        l , r = 0, 1
+        l = 0
+        r = 1
         maxP = 0
 
         while r < len(prices):
@@ -11,5 +12,6 @@ class Solution:
                 l = r
             r +=1
         return maxP
-            
-        
+
+# TC - O(N)
+# SC - O(1)      
