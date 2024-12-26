@@ -12,6 +12,4 @@ class Solution:
                 newInterval = [min(newInterval[0], intervals[i][0]), max(newInterval[1], intervals[i][1])]
         res.append(newInterval)
         return res
-
-# TC: O(N)
-# SC: O(N)
+        
