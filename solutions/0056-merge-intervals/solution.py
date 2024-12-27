@@ -10,6 +10,4 @@ class Solution:
             else:
                 output.append([start, end])
         return output
-
-# TC: O(nlogn)
-# SC: O(n)
+        
