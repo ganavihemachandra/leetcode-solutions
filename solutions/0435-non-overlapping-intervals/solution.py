@@ -8,9 +8,7 @@ class Solution:
             if start >= lastEnd:
                 lastEnd = end
             else:
-                res +=1
+                res += 1
                 lastEnd = min(lastEnd, end)
         return res
-
-# TC: O(n logn)
-# SC: O(n)
+        
