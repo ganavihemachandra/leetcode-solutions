@@ -5,10 +5,10 @@ class Solution:
             preMap[crs].append(pre)
         
         visit = set()
+
         def dfs(crs):
             if crs in visit:
                 return False
-            
             if preMap[crs] == []:
                 return True
             
@@ -21,9 +21,7 @@ class Solution:
             return True
         
         for crs in range(numCourses):
-            if not dfs(crs):
-                return False
+            if not dfs(crs): return False
         return True
 
-# TC: O(V+E)
-# SC: O(V+E)
+        
