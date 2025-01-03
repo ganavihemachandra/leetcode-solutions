@@ -1,14 +1,14 @@
 class Solution:
     def leastInterval(self, tasks: List[str], n: int) -> int:
         count = Counter(tasks)
-        maxHeap = [-cnt for cnt in count.values()]
+        maxHeap = [-c for c in count.values()]
         heapq.heapify(maxHeap)
 
-        q = deque()
         time = 0
+        q = deque()
 
-        while maxHeap or q:
-            time +=1
+        while q or maxHeap:
+            time += 1
             if maxHeap:
                 cnt = 1 + heapq.heappop(maxHeap)
                 if cnt != 0:
@@ -16,7 +16,4 @@ class Solution:
             if q and q[0][1] == time:
                 heapq.heappush(maxHeap, q.popleft()[0])
         return time
-
-# Time Complexity - O(M * log k), where M - total tasks and k is number of unique tasks
-# Space Complexity - O(k + n), where k - number of unique tasks and n is cool-down period
         
