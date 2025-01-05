@@ -4,14 +4,14 @@ class RandomizedSet:
         self.numMap = {}
         self.numList = []
         
-
     def insert(self, val: int) -> bool:
         res = val not in self.numMap
+
         if res:
             self.numMap[val] = len(self.numList)
             self.numList.append(val)
         return res
-
+        
     def remove(self, val: int) -> bool:
         res = val in self.numMap
         if res:
@@ -22,6 +22,7 @@ class RandomizedSet:
             self.numMap[lastVal] = idx
             del self.numMap[val]
         return res
+        
 
     def getRandom(self) -> int:
         return random.choice(self.numList)
