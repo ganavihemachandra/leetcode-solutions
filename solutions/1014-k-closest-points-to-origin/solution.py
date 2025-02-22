@@ -6,10 +6,13 @@ class Solution:
             distance = x**2 + y**2
             minHeap.append([distance, x, y])
         heapq.heapify(minHeap)
-        
         res = []
         for i in range(k):
             distance, x, y = heapq.heappop(minHeap)
             res.append([x, y])
         return res
 
+# Operation	Time Complexity	Space Complexity
+# Building the heap (heapify)	O(N)	O(N)
+# Popping k elements	O(k log N)	O(k)
+# Total	O(N + k log N)	O(N)
