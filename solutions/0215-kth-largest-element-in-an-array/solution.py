@@ -8,4 +8,7 @@ class Solution:
                 heapq.heappop(heap)
                 heapq.heappush(heap, n)
         return heap[0]
+
+# TC: O(n logk)
+# SC: O(k)
         
