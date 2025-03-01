@@ -1,18 +1,17 @@
 class Solution:
     def findMedianSortedArrays(self, nums1: List[int], nums2: List[int]) -> float:
         A, B = nums1, nums2
-        total = len(nums1) + len(nums2)
+        total =  len(A) + len(B)
         half = total // 2
 
         if len(B) < len(A):
-            B, A = A, B
-
-        l = 0
-        r = len(A) - 1
-
+            A, B = B, A
+        
+        l, r = 0, len(A) - 1
         while True:
             i = (l + r) // 2
             j = half - i - 2
+
             ALeft = A[i] if i >= 0 else float('-inf')
             ARight = A[i+1] if (i+1) < len(A) else float('inf')
             BLeft = B[j] if j >= 0 else float('-inf')
@@ -26,5 +25,4 @@ class Solution:
             elif ALeft > BRight:
                 r = i - 1
             else:
-                l = i + 1
-
+                l = i + 1       
