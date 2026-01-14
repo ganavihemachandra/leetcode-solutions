@@ -6,19 +6,19 @@
 #         self.right = right
 class Solution:
     def buildTree(self, preorder: List[int], inorder: List[int]) -> Optional[TreeNode]:
-        if not preorder or not inorder:
-            return None
-        root = TreeNode(preorder[0])
-        mid = inorder.index(preorder[0])
-        root.left = self.buildTree(preorder[1:mid+1], inorder[:mid])
-        root.right = self.buildTree(preorder[mid+1:], inorder[mid+1:])
-        return root
+        indices = { val: idx for idx, val in enumerate(inorder)}
+        self.pre_idx = 0
 
-# Time Complexity: O(n^2)
-# - For each node, finding its index in the inorder list takes O(n),
-#   and this is done for all n nodes.
+        def dfs(l, r):
+            if l > r:
+                return None
+            
+            root_val = preorder[self.pre_idx]
+            self.pre_idx += 1
+            root = TreeNode(root_val)
 
-# Space Complexity: O(n)
-# - Recursive call stack can go up to O(n) in the worst case (unbalanced tree).
-# - Slicing creates new lists, using additional O(n) space in total.
-
+            mid = indices[root_val]
+            root.left = dfs(l, mid-1)
+            root.right = dfs(mid+1, r)
+            return root
+        return dfs(0, len(inorder)-1)
